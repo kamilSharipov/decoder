@@ -59,7 +59,7 @@ std::vector<int> MajorityDecoder::decode(const std::vector<int>& received) {
         }
     }
 
-    return LDPCpp;
+    return decoded;
 }
 
-} // namespace decoder
+} // namespace LDPCpp

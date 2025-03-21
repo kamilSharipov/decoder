@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-using namespace decoder;
+using namespace LDPCpp;
 
 int main(int argc, char const *argv[]) {
     std::vector<int> original_message = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };

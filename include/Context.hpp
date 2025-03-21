@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Encoder.hpp"
 #include "Channel.hpp"
 #include "AbstractDecoder.hpp"
 

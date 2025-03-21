@@ -3,7 +3,6 @@
 #include "AbstractDecoder.hpp"
 
 #include <cstdint>
-#include <exception>
 
 namespace LDPCpp {
 
