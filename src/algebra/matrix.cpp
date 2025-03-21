@@ -16,14 +16,14 @@ std::vector<std::vector<int>> transpose_matrix(const std::vector<std::vector<int
     return transposed;
 }
 
-std::vector<std::vector<int>> create_circulant_matrix(std::uint32_t size, std::uint32_t shift) {
+std::vector<std::vector<int>> create_circulant_matrix(std::uint32_t size, std::int32_t shift) {
     std::vector<std::vector<int>> circulant_matrix(size, std::vector<int>(size, 0));
 
     if (shift == -1) {
         return circulant_matrix;
     }
 
-    for (size_t i = 0; i < size; ++i) {
+    for (std::uint32_t i = 0; i < size; ++i) {
         circulant_matrix[i][(i + shift) % size] = 1;
     }
     
@@ -38,14 +38,14 @@ std::vector<std::vector<int>> create_parity_check_matrix(
     std::uint32_t rows = base_matrix.size();
     std::uint32_t cols = base_matrix[0].size();
 
-    for (int i = 0; i < rows; ++i) {
+    for (std::uint32_t i = 0; i < rows; ++i) {
         std::vector<std::vector<int>> rowBlocks;
-        for (int j = 0; j < cols; ++j) {
+        for (std::uint32_t j = 0; j < cols; ++j) {
             auto block = create_circulant_matrix(block_size, base_matrix[i][j]);
             if (j == 0) {
                 rowBlocks = block;
             } else {
-                for (int k = 0; k < block_size; ++k) {
+                for (std::uint32_t k = 0; k < block_size; ++k) {
                     rowBlocks[k].insert(rowBlocks[k].end(), block[k].begin(), block[k].end());
                 }
             }
