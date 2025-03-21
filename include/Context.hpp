@@ -6,7 +6,7 @@
 
 #include <vector>
 
-namespace decoder {
+namespace LDPCpp {
 
 class Context {
 private:
@@ -23,4 +23,4 @@ public:
     std::vector<int> process();
 };
 
-} // namespace decoder
+} // namespace LDPCpp

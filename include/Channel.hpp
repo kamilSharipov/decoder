@@ -3,7 +3,7 @@
 #include <vector>
 #include <random>
 
-namespace decoder {
+namespace LDPCpp {
 
 class Channel final {
 private:
@@ -14,4 +14,4 @@ public:
     std::vector<int> transmit(const std::vector<int>& data) const;
 };
 
-} // namespace decoder
+} // namespace LDPCpp

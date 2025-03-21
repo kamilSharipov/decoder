@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace decoder {
+namespace LDPCpp {
 
 MajorityDecoder::MajorityDecoder(
     std::vector<std::vector<int>>& H
@@ -59,7 +59,7 @@ std::vector<int> MajorityDecoder::decode(const std::vector<int>& received) {
         }
     }
 
-    return decoded;
+    return LDPCpp;
 }
 
 } // namespace decoder

@@ -1,6 +1,6 @@
 #include "Context.hpp"
 
-namespace decoder {
+namespace LDPCpp {
 
 Context::Context(
     std::vector<int> original_message
@@ -17,4 +17,4 @@ std::vector<int> Context::process() {
 }
 
 
-} // namespace decoder
+} // namespace LDPCpp

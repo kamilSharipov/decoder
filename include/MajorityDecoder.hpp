@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <exception>
 
-namespace decoder {
+namespace LDPCpp {
 
 class MajorityDecoder final : public AbstractDecoder {
 private:
@@ -18,4 +18,4 @@ public:
     std::vector<int> decode(const std::vector<int>& received) override;
 };
 
-} // namespace decoder
+} // namespace LDPCpp

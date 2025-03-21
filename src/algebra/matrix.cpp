@@ -1,6 +1,6 @@
 #include "matrix.hpp"
 
-namespace decoder {
+namespace LDPCpp {
 
 std::vector<std::vector<int>> transpose_matrix(const std::vector<std::vector<int>>& matrix) {
     int rows = matrix.size();
@@ -56,4 +56,4 @@ std::vector<std::vector<int>> create_parity_check_matrix(
     return H;
 }
 
-} // namespace decoder
+} // namespace LDPCpp

@@ -1,7 +1,12 @@
 #pragma once
 
-namespace decoder {
+#include "AbstractDecoder.hpp"
+
+namespace LDPCpp {
+
+class BitFlipDecoder : public AbstractDecoder {
 
 
+};
   
-} // namespace decoder
+} // namespace LDPCpp

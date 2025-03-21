@@ -1,6 +1,6 @@
 #include "Channel.hpp"
 
-namespace decoder {
+namespace LDPCpp {
 
 Channel::Channel(double error_probability) noexcept 
     : m_error_probability(error_probability) {}
@@ -20,4 +20,4 @@ std::vector<int> Channel::transmit(const std::vector<int>& data) const {
     return received;
 }
 
-} // namespace decoder
+} // namespace LDPCpp

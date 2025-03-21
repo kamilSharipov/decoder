@@ -2,7 +2,7 @@
 
 #include <vector>
 
-namespace decoder {
+namespace LDPCpp {
 
 class AbstractDecoder {
 protected:
@@ -13,4 +13,4 @@ public:
     virtual ~AbstractDecoder() = default;
 };
 
-} // namespace decoder
+} // namespace LDPCpp
