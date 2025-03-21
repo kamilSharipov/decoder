@@ -1,43 +1,50 @@
 #include "Context.hpp"
 #include "MajorityDecoder.hpp"
+#include "BitFlipDecoder.hpp"
 #include "matrix.hpp"
 
 #include <iostream>
 
 using namespace LDPCpp;
 
-int main(int argc, char const *argv[]) {
-    std::vector<int> original_message = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+const double LOSS_PROBABILITY = 0.1;
+const std::uint32_t MAX_NUM_OF_ITERATIONS = 100;
 
+int main() {
+    // === Сreating a null message ===
+    std::vector<int> original_message = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    std::vector<int> decoded;
+
+    std::cout << "The original message:\n";
     for (auto i: original_message) {
         std::cout << i << " ";
     }
-    std::cout << "\n";
+    std::cout << "\n\n";
+
+    // === Setting the chanel ===
+    Channel ch(LOSS_PROBABILITY);
     
-    std::vector<std::vector<int>> base_matrix = {
-        {0, 1, -1},
-        {2, -1, 3},
-        {-1, 0, 1}
-    };
+    // === Setting the Majority decoding algorithm ===
+    MajorityDecoder maj_dec(MAX_NUM_OF_ITERATIONS, original_message.size());
 
-    std::uint32_t block_size = 3;
+    // === Creating the Context object and launching the Majority decoding algorithm ===
+    Context maj_context(original_message, &ch, &maj_dec);
+    decoded = maj_context.process();
 
-    std::vector<std::vector<int>> H = create_parity_check_matrix(base_matrix, block_size);
+    std::cout << "The result of the Majority decoding algorithm:\n";
+    for (auto i: decoded) {
+        std::cout << i << " ";
+    }
+    std::cout << "\n\n";
 
-    //for (int i = 0; i < H.size(); ++i) {
-    //    for (int j = 0; j < H[0].size(); ++j) {
-    //        std::cout << H[i][j] << " ";
-    //    }
-    //    std::cout << "\n";
-    //}
-    //std::cout << "\n";
+    // === Setting the BitFlip decoding algorithm ===
+    BitFlipDecoder bf_dec(MAX_NUM_OF_ITERATIONS, original_message.size());
 
-    Channel ch(0.1);
-    MajorityDecoder dec(H, 100);
-    Context cntx(original_message, &ch, &dec);
+    // === Creating the Context object and launching the BitFlip decoding algorithm ===
+    Context bf_context(original_message, &ch, &bf_dec);
+    decoded = bf_context.process();
 
-    std::vector<int> decoded = cntx.process();
-
+    std::cout << "The result of the BitFlip decoding algorithm:\n";
     for (auto i: decoded) {
         std::cout << i << " ";
     }

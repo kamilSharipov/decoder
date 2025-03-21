@@ -6,11 +6,8 @@
 
 namespace LDPCpp {
 
-MajorityDecoder::MajorityDecoder(
-    std::vector<std::vector<int>>& H
-    , std::uint32_t num_of_iterations) noexcept
-
-    : AbstractDecoder(H)
+MajorityDecoder::MajorityDecoder(std::uint32_t num_of_iterations, std::uint32_t size) noexcept
+    : m_H(create_parity_check_matrix(BASE_MATRIX, size / BASE_MATRIX.size()))
     , m_num_of_iterations(num_of_iterations) {}
 
 std::vector<int> MajorityDecoder::decode(const std::vector<int>& received) {

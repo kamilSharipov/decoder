@@ -8,12 +8,11 @@ namespace LDPCpp {
 
 class BitFlipDecoder : public AbstractDecoder {
 private:
+    std::vector<std::vector<int>> m_H;
     std::uint32_t m_num_of_iterations;
 
 public:
-    explicit BitFlipDecoder(
-        std::vector<std::vector<int>>& H
-        , std::uint32_t num_of_iterations) noexcept;
+    explicit BitFlipDecoder(std::uint32_t num_of_iterations, std::uint32_t size) noexcept;
     std::vector<int> decode(const std::vector<int>& received) override;
 };
   
