@@ -11,7 +11,7 @@ private:
 
 public:
     explicit Channel(double error_probability) noexcept;
-    std::vector<int> transmit(const std::vector<int>& data) const;
+    [[nodiscard]] std::vector<int> transmit(const std::vector<int>& data) const;
 };
 
 } // namespace LDPCpp

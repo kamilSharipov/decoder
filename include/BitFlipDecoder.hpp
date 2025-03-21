@@ -13,7 +13,7 @@ private:
 
 public:
     explicit BitFlipDecoder(std::uint32_t num_of_iterations, std::uint32_t size) noexcept;
-    std::vector<int> decode(const std::vector<int>& received) override;
+    [[nodiscard]] std::vector<int> decode(const std::vector<int>& received) override;
 };
   
 } // namespace LDPCpp
