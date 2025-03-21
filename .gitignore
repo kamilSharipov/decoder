@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# vscode
+.vscode
+
+# CMake
+cmake_install.cmake
+CMakeCache.txt
+Makefile
+CMakeFiles
