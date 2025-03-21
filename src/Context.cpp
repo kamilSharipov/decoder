@@ -4,15 +4,17 @@ namespace decoder {
 
 Context::Context(
     std::vector<int> original_message
-    , Encoder* encoder
     , Channel* channel
-    , AbstractDecoder* abstract_decoder)
+    , AbstractDecoder* decoder) noexcept
 
     : m_original_message(original_message)
-    , m_encoder(encoder)
     , m_channel(channel)
-    , m_abstarct_decoder(abstract_decoder) {}
+    , m_decoder(decoder) {}
+
+std::vector<int> Context::process() {
+    std::vector<int> received = m_channel->transmit(m_original_message);
+    return m_decoder->decode(received);
+}
 
 
-    
 } // namespace decoder

@@ -1,32 +1,44 @@
-#include "Encoder.hpp"
-#include "Channel.hpp"
+#include "Context.hpp"
 #include "MajorityDecoder.hpp"
+#include "matrix.hpp"
 
 #include <iostream>
 
 using namespace decoder;
 
 int main(int argc, char const *argv[]) {
-    std::vector<int> original_message = {0, 1, 0, 1, 1, 0, 1, 0};
+    std::vector<int> original_message = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
     for (auto i: original_message) {
         std::cout << i << " ";
     }
     std::cout << "\n";
     
-    Encoder encoder(4);
-    
-    std::vector<int> encoded = encoder.encode(original_message);
+    std::vector<std::vector<int>> base_matrix = {
+        {0, 1, -1},
+        {2, -1, 3},
+        {-1, 0, 1}
+    };
 
-    Channel channel(0.1);
+    std::uint32_t block_size = 3;
 
-    std::vector<int> received = channel.transmit(encoded);
+    std::vector<std::vector<int>> H = create_parity_check_matrix(base_matrix, block_size);
 
-    MajorityDecoder majority_decoder(10000);
+    //for (int i = 0; i < H.size(); ++i) {
+    //    for (int j = 0; j < H[0].size(); ++j) {
+    //        std::cout << H[i][j] << " ";
+    //    }
+    //    std::cout << "\n";
+    //}
+    //std::cout << "\n";
 
-    std::vector<int> vec = majority_decoder.decode(original_message);
+    Channel ch(0.1);
+    MajorityDecoder dec(H, 100);
+    Context cntx(original_message, &ch, &dec);
 
-    for (auto i: vec) {
+    std::vector<int> decoded = cntx.process();
+
+    for (auto i: decoded) {
         std::cout << i << " ";
     }
     std::cout << "\n";

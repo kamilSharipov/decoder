@@ -12,7 +12,9 @@ private:
     std::uint32_t m_num_of_iterations;
 
 public:
-    explicit MajorityDecoder(std::uint32_t num_of_iterations) noexcept;
+    explicit MajorityDecoder(
+        std::vector<std::vector<int>>& H
+        , std::uint32_t num_of_iterations) noexcept;
     std::vector<int> decode(const std::vector<int>& received) override;
 };
 

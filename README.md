@@ -1,2 +1,2 @@
 # decoder
-Implementation of majority decoding and decoding by bit inversion of a linear code.
+Implementation of majority  and bit-flip decoding of a linear code.
