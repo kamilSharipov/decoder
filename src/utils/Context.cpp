@@ -16,5 +16,4 @@ std::vector<int> Context::process() {
     return m_decoder->decode(received);
 }
 
-
 } // namespace LDPCpp
