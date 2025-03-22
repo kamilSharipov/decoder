@@ -14,7 +14,7 @@ set(SOURCES
     src/decoders/MajorityDecoder
     src/utils/Channel.cpp
     src/utils/Context.cpp
-    example/main.cpp
+    example/simple_example.cpp
 )
 
 add_executable(LDPCpp ${SOURCES})
