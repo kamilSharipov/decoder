@@ -12,14 +12,6 @@ BitFlipDecoder::BitFlipDecoder(std::uint32_t num_of_iterations, std::uint32_t si
 
 std::vector<int> BitFlipDecoder::decode(const std::vector<int>& received) {
     std::vector<int> decoded = received;
-    
-    // === Initialization: γ = (γ1, . . . ,yn), where yi is the weight of column i of the matrix H ===
-    std::vector<int> gamma(m_H[0].size(), 0);
-    for (std::uint32_t i = 0; i < m_H[0].size(); ++i) {
-        for (const auto& row : m_H) {
-            gamma[i] += row[i];
-        }
-    }
 
     // === Transposing the H matrix ===
     std::vector<std::vector<int>> HT = transpose_matrix(m_H);
