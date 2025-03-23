@@ -14,10 +14,9 @@ set(SOURCES
     src/decoders/MajorityDecoder
     src/utils/Channel.cpp
     src/utils/Context.cpp
-    example/simple_example.cpp
 )
 
-add_executable(LDPCpp ${SOURCES})
+add_executable(LDPCpp ${SOURCES} analysis/simulation.cpp)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic -O2")
